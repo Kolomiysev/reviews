@@ -14,48 +14,6 @@ $this->title = 'My Yii Application';
 
 <div class="site-index">
 
-    <?php
-
-    foreach ($data as $key => $value) {
-        if ($value["rate"] == null) {
-            $data[$key]["rate"] = 0;
-        }
-    }
-
-    usort($data, function($a, $b){
-        return ($b['rate'] - $a['rate']);
-    });
-
-
-
-     ?>
-
-
-
-
-
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Рейтинг</th>
-            <th>Название</th>
-            <th>Адрес</th>
-            <th>Отзывы</th>
-        </tr>
-        </thead>
-        <?php foreach ($data as $key => $value): ?>
-            <tr>
-                <td><?= Html::encode($value['rate']) ?></td>
-                <td><?= Html::encode($value['name']) ?></td>
-                <td><?= Html::encode($value['url']) ?></td>
-                <td></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-
-
-
-
 </div>
 
 
