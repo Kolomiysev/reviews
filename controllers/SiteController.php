@@ -56,53 +56,18 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $db = new \yii\db\Connection([
-            'dsn' => 'mysql:host=localhost;dbname=vict579_reviews',
-            'username' => 'vict579_reviews',
-            'password' => 'dvader-invader',
-            'charset' => 'utf8',
-        ]);
 
-
+        /*
         $data = $db->createCommand('SELECT s.name,s.url,sum(r.type) as rate
             FROM sites as s
             LEFT JOIN reviews as r ON s.id = r.site
             GROUP BY s.id
             ')->queryAll();
-
-
-
-
-
-
-
-
-
-        return $this->render('index', [
-            'data' => $data
-        ]);
-
-
-        /*
-
-        $query = Sites::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 10,
-            'totalCount' => $query->count(),
-        ]);
-
-        $sites = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-
-        return $this->render('index', [
-            'sites' => $sites,
-            'pagination' => $pagination,
-        ]);
         */
 
-        //return $this->render('index');
+
+        return $this->render('index');
+
     }
 
     public function actionLogin()
