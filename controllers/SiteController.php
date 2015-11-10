@@ -11,9 +11,10 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SimpleForm;
 use app\models\Sites;
+use app\models\SitesSearch;
 use yii\data\Pagination;
 
-
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -55,18 +56,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $model = new Sites();
+        $searchModel = new \app\models\search\SitesSearch();
+        $searchModel->load(Yii::$app->request->get());
 
+        $dataProvider = $searchModel->search();
 
-        /*
-        $data = $db->createCommand('SELECT s.name,s.url,sum(r.type) as rate
-            FROM sites as s
-            LEFT JOIN reviews as r ON s.id = r.site
-            GROUP BY s.id
-            ')->queryAll();
-        */
-
-
-        return $this->render('index');
+        return $this->render('index',[
+            'model'=>$model,
+            'dataProvider'=>$dataProvider
+        ]);
 
     }
 
@@ -111,17 +110,6 @@ class SiteController extends Controller
     }
 
 
-    // мои изменения
-
-    public function actionSimple_form()
-    {
-
-        $model=new SimpleForm();
-
-        return $this->render('simple_form',[
-            'model' => $model,
-        ]);
-    }
 
 
 }
