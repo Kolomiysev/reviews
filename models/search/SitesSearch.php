@@ -12,6 +12,9 @@ class SitesSearch extends Sites
 
     public $name;
     public $url;
+    public $rating;
+    public $country;
+    public $pagination=false;
 
     public function rules() {
         return [
@@ -21,8 +24,7 @@ class SitesSearch extends Sites
 
     public function search() {
 
-        $query = Sites::find();
-
+        $query = Sites::find()->limit(5);
 
        // $query->leftJoin('reviews');
 
@@ -34,12 +36,31 @@ class SitesSearch extends Sites
 
         // $query->leftJoin(Users::tableName() . ' AS reseller', 'reseller.id = ' . self::tableName() . '.reseller_id');
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => ['id' => 'desc']
-            ]
-        ]);
+        if($this->pagination==true){
+
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => [
+                    'defaultOrder' => ['rating' => 'desc']
+                ],
+                'pagination' => [
+                    'pageSize' => 10
+                ]
+            ]);
+
+        } else {
+
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => [
+                    'defaultOrder' => ['rating' => 'desc']
+                ],
+                'pagination' => false
+            ]);
+
+        }
+
+        $query->andFilterWhere(['=',Sites::tableName().'.country', $this->country]);
 
         /*
 

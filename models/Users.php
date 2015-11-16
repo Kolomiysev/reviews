@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 
-class Sites extends \app\models\base\Sites
+class Users extends \app\models\base\Users
 {
     public $search;
 

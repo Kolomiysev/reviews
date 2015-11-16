@@ -4,9 +4,8 @@ namespace app\models;
 
 use Yii;
 
-class Sites extends \app\models\base\Sites
+class Reviews extends \app\models\base\Reviews
 {
     public $search;
-
 
 }

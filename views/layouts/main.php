@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Reviews',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,7 +36,9 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+
+            ['label' => 'Добавить сайт', 'url' => ['/site/index']],
+            /*
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ?
@@ -47,9 +49,10 @@ AppAsset::register($this);
                     'linkOptions' => ['data-method' => 'post']
                 ],
 
-            // Смена языка
+
             ['label' => 'Обычная форма', 'url' => ['/site/simple_form']]
-            // Смена языка
+
+            */
         ],
     ]);
     NavBar::end();
@@ -67,9 +70,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Reviews <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><a href="http://victorib.us" target="_blank">Victoribus Group</a></p>
     </div>
 </footer>
 
